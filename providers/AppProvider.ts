@@ -1,4 +1,5 @@
 import { IocContract } from '@adonisjs/fold'
+import GreetingService from 'App/Services/GreetingService'
 
 export default class AppProvider {
   constructor (protected $container: IocContract) {
@@ -6,6 +7,7 @@ export default class AppProvider {
 
   public register () {
     // Register your own bindings
+    this.$container.singleton('MyProject/GreetingService', () => new GreetingService())
   }
 
   public boot () {
